@@ -1,238 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Midoku - Mini Sudoku</title>
-    <style>
-        :root {
-            /* Your provided color palette */
-            --primary: #0A84FF;
-            --accent: #0A84FF;
-            --darkAccent: #64D2FF;
-
-            /* Light Theme */
-            --background: #F7F9FC;
-            --banner: #E9EEF5;
-            --textPrimary: #1D2B3A;
-            --textSecondary: #6D7580; /* Neutral gray for secondary text */
-            --surface: #FFFFFF;
-            --surfaceAlternate: #F0F4F8;
-            --gridBorder: #D2D9E1;
-            --cellBorder: #E1E6EC;
-            --selectedCell: #E6F3FF;
-            --dangerBackground: #FFEBEA;
-
-            /* Status Colors */
-            --secondary: #85B6FF; /* Pale blue for UI elements */
-            --success: #28A745;
-            --warning: #FF9F0A;
-            --danger: #D93654;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
-            padding: 2rem;
-            background-color: var(--background);
-            color: var(--textPrimary);
-            text-align: center;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: var(--surface);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: var(--primary);
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        h2 {
-            color: var(--textPrimary);
-            font-size: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        p {
-            color: var(--textSecondary);
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: left;
-            margin: 0 auto;
-            max-width: 500px;
-        }
-
-        li {
-            background: var(--surfaceAlternate);
-            margin: 0.5rem 0;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            color: var(--textPrimary);
-        }
-
-        .feature-title {
-            font-weight: bold;
-        }
-
-        /* Old CTA button CSS is no longer needed but kept for reference
-        .cta-button {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 2rem;
-            background-color: var(--primary);
-            color: var(--surface);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: var(--darkAccent);
-        }
-        */
-
-        .download-images {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem; /* Increased gap for better spacing */
-            flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
-        }
-
-        .download-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: var(--surfaceAlternate);
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--textPrimary);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 200px; /* Fixed width for the cards */
-        }
-
-        .download-card:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-        }
-
-        .download-card img {
-            width: 100%; /* Makes image responsive within the card */
-            max-width: 150px; /* Prevents image from getting too large */
-            height: auto;
-            margin-bottom: 1rem;
-        }
-
-        .download-card span {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .footer {
-            margin-top: 3rem;
-            border-top: 1px solid var(--gridBorder);
-            padding-top: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--textSecondary);
-            text-align: center;
-        }
-
-        .footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-links {
-            margin-top: 1rem;
-        }
-
-        .footer-links a {
-            margin: 0 0.5rem;
-            font-weight: normal;
-        }
-    </style>
+    <title>Midoku - 6x6 Mini Sudoku Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
 
-<div class="container">
-    <h1>Midoku - Mini Sudoku</h1>
-    <p>A Fun and Fast Brain Puzzle Game</p>
+<body class="antialiased">
 
-    <p>
-        Ready for a fresh take on a classic puzzle game? <b>Midoku - Mini Sudoku</b> offers a compact and engaging 6x6
-        grid perfect for all skill levels. Train your logic and number skills with hundreds of expertly crafted puzzles
-        designed to give your brain the perfect workout, anytime, anywhere.
-    </p>
-
-    <h2>Why You'll Love Midoku:</h2>
-    <ul>
-        <li><span class="feature-title">Compact 6x6 Grids:</span> Enjoy faster games on a smaller grid, perfect for
-            short breaks or commutes.
-        </li>
-        <li><span class="feature-title">Multiple Difficulty Levels:</span> Whether you're a beginner or an expert, find
-            the perfect challenge with Easy, Medium, and Hard modes.
-        </li>
-        <li><span class="feature-title">Helpful In-Game Tools:</span> Use <span class="feature-title">Hints</span>, make
-            notes with <span class="feature-title">Pencil Marks</span>, and correct mistakes with the <span
-                    class="feature-title">Undo</span> button.
-        </li>
-        <li><span class="feature-title">Offline Play:</span> No Wi-Fi? No problem! Play your favorite puzzles completely
-            offline.
-        </li>
-        <li><span class="feature-title">Clean and Elegant Design:</span> A simple, intuitive interface that makes
-            solving puzzles a joy.
-        </li>
-    </ul>
-
-    <h2>Download Midoku</h2>
-    <p>Available now on the App Store and Google Play!</p>
-    <div class="download-images">
-        <a href="https://apps.apple.com/tr/app/midoku-6x6-mini-sudoku/id6752579615" target="_blank" class="download-card">
-            <img src="assets/ios.png" alt="Download on the App Store">
-            <span>iOS App Store</span>
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.sevincaeren.midoku" target="_blank" class="download-card">
-            <img src="assets/android.png" alt="Get it on Google Play">
-            <span>Google Play Store</span>
-        </a>
-    </div>
-
-    <div class="footer">
-        <h3>Reach Me</h3>
-        <p>
-            <span class="feature-title">Mail:</span> <a
-                href="mailto:sevinc.aeren@gmail.com">sevinc.aeren@gmail.com</a><br>
-            <span class="feature-title">LinkedIn:</span> <a href="https://www.linkedin.com/in/alierensevinc"
-                                                            target="_blank">linkedin.com/in/alierensevinc</a><br>
-            <span class="feature-title">GitHub:</span> <a href="https://github.com/alierensevinc" target="_blank">github.com/alierensevinc</a>
-        </p>
-
-        <div class="footer-links">
-            <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-and-conditions.html">Terms and
-            Conditions</a>
+    <nav class="fixed w-full z-50 top-0 apple-blur border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xs underline decoration-2">M</span>
+                </div>
+                <span class="text-lg font-semibold tracking-tight">Midoku</span>
+            </div>
+            <a href="https://apps.apple.com/us/app/midoku-6x6-mini-sudoku-game/id6752579615"
+                class="bg-black text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-all">
+                Download
+            </a>
         </div>
-    </div>
-</div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 gradient-text leading-snug pb-2">
+                Quick Brain Puzzle Challenge
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Stay sharp and master 6x6 mini sudoku puzzles. Perfect for any age, experience a fast and simple brain
+                workout!
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://apps.apple.com/us/app/midoku-6x6-mini-sudoku-game/id6752579615"
+                    class="transition-transform active:scale-95">
+                    <img src="https://camo.githubusercontent.com/30f50ff4d0d1beb40b71be1f37066725334122311814765ef6045728f96dcce3/68747470733a2f2f646576656c6f7065722e6170706c652e636f6d2f6173736574732f656c656d656e74732f6261646765732f646f776e6c6f61642d6f6e2d7468652d6170702d73746f72652e737667"
+                        alt="Download on App Store" class="h-14">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gray-50 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-center p-4">
+                    <div
+                        class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mx-auto mb-6 text-2xl">
+                        ⚡️
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Quick & Fun</h3>
+                    <p class="text-gray-500 leading-relaxed">Enjoy a faster-paced 6x6 grid compared to classic 9x9
+                        sudoku,
+                        making it perfect for short mental breaks.</p>
+                </div>
+                <div class="text-center p-4">
+                    <div
+                        class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mx-auto mb-6 text-2xl">
+                        🌟
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">For Everyone</h3>
+                    <p class="text-gray-500 leading-relaxed">Designed for ages 4+ with a clean interface and
+                        simple aesthetics, ensuring an easy-to-use experience.</p>
+                </div>
+                <div class="text-center p-4">
+                    <div
+                        class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mx-auto mb-6 text-2xl">
+                        🧠
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Brain Training</h3>
+                    <p class="text-gray-500 leading-relaxed">Improve your problem-solving skills and
+                        keep your mind active and sharp with regular puzzle exercises.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 overflow-hidden px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 tracking-tight">Discover the App</h2>
+            <div class="flex overflow-x-auto space-x-6 pb-10 no-scrollbar snap-x snap-mandatory justify-start px-6">
+                <div class="flex-shrink-0 w-64 snap-start">
+                    <img src="assets/1.jpeg" alt="App Screen 1"
+                        class="w-full h-auto rounded-3xl shadow-xl border border-gray-200">
+                </div>
+                <div class="flex-shrink-0 w-64 snap-start">
+                    <img src="assets/2.jpeg" alt="App Screen 2"
+                        class="w-full h-auto rounded-3xl shadow-xl border border-gray-200">
+                </div>
+                <div class="flex-shrink-0 w-64 snap-start">
+                    <img src="assets/3.jpeg" alt="App Screen 3"
+                        class="w-full h-auto rounded-3xl shadow-xl border border-gray-200">
+                </div>
+                <div class="flex-shrink-0 w-64 snap-start">
+                    <img src="assets/4.jpeg" alt="App Screen 4"
+                        class="w-full h-auto rounded-3xl shadow-xl border border-gray-200">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="py-16 bg-white border-t border-gray-100 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="flex items-center space-x-2 mb-4 justify-center md:justify-start">
+                    <div class="w-6 h-6 bg-black rounded flex items-center justify-center">
+                        <span class="text-white font-bold text-[8px] underline decoration-1">M</span>
+                    </div>
+                    <span class="font-bold">Midoku</span>
+                </div>
+                <p class="text-gray-400 text-sm">©2024 Ali Eren Sevinc</p>
+            </div>
+            <div class="flex space-x-8 text-sm text-gray-500">
+                <a href="privacy-policy.html" class="hover:text-black transition-colors">Privacy Policy</a>
+                <a href="terms-and-conditions.html" class="hover:text-black transition-colors">Terms and Conditions</a>
+                <a href="mailto:sevinc.aeren@gmail.com" class="hover:text-black transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
+
 </html>
